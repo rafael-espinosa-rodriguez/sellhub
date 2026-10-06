@@ -1,0 +1,8 @@
+{
+  "name": "VentaCatálogo",
+  "description": "Aplicación local-first para organizar productos del catálogo de venta, fotografías y compartir fácilmente copy comercial y fotos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
