@@ -706,6 +706,58 @@ export default function App() {
               </div>
             </div>
           )}
+
+          {/* VISTA 3: CATEGORÍAS */}
+          {activeTab === 'categorias' && (
+            <div className="space-y-6">
+              <div className="border border-[#262626] bg-[#0a0a0a] p-5">
+                <div className="flex items-center gap-2 font-mono text-[10px] text-[#828282] uppercase tracking-widest">
+                  <span className="w-2 h-2 bg-[#d4ff00]" />
+                  <span>TAXONOMÍA // ÍNDICE DE CATEGORÍAS REGISTRADAS</span>
+                </div>
+                <h1 className="font-title font-bold text-2xl text-white uppercase mt-1">
+                  CATEGORÍAS DE CATÁLOGO
+                </h1>
+                <p className="font-mono text-xs text-[#828282] mt-0.5">
+                  // Administra las secciones comerciales de tu inventario local.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {categories.map((cat, idx) => {
+                  const count = products.filter((p) => p.category === cat.name).length;
+                  return (
+                    <div
+                      key={cat.id}
+                      onClick={() => {
+                        setSelectedCategory(cat.name);
+                        setActiveTab('catalogo');
+                        showToast(`FILTRANDO POR ${cat.name.toUpperCase()}`, 'info');
+                      }}
+                      className="p-4 border border-[#262626] bg-[#0d0d0d] hover:bg-[#141414] hover:border-[#d4ff00] cursor-pointer transition-colors group flex items-center justify-between font-mono"
+                    >
+                      <div>
+                        <div className="text-[10px] text-[#828282] uppercase">
+                          [{String(idx + 1).padStart(2, '0')}]
+                        </div>
+                        <h3 className="font-title text-base font-bold text-white uppercase group-hover:text-[#d4ff00] transition-colors mt-0.5">
+                          {cat.name}
+                        </h3>
+                      </div>
+                      <div className="text-right">
+                        <span className="px-2 py-1 bg-[#1a1a1a] border border-[#262626] text-white text-xs font-bold">
+                          {count} {count === 1 ? 'ÍTEM' : 'ÍTEMS'}
+                        </span>
+                        <div className="text-[9px] text-[#828282] mt-1 group-hover:text-white uppercase">
+                          VER &gt;&gt;
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </main>
 
         {/* Footer Técnico Inferior */}

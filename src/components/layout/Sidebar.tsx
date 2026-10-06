@@ -1,4 +1,4 @@
-import { Terminal } from 'lucide-react';
+import { Terminal, FolderTree } from 'lucide-react';
 import type { ActiveTab } from '../../types/navigation.ts';
 
 interface SidebarProps {
@@ -37,8 +37,9 @@ export function Sidebar({
           </div>
         </div>
 
-        {/* Navegación Primaria */}
+        {/* Navegación Primaria Exacta (01 a 04) */}
         <nav className="p-0 border-b border-[#262626]">
+          {/* 01. Catálogo */}
           <button
             type="button"
             onClick={() => onNavigate('catalogo')}
@@ -57,6 +58,7 @@ export function Sidebar({
             </span>
           </button>
 
+          {/* 02. Favoritos */}
           <button
             type="button"
             onClick={() => onNavigate('favoritos')}
@@ -75,6 +77,26 @@ export function Sidebar({
             </span>
           </button>
 
+          {/* 03. Categorías */}
+          <button
+            type="button"
+            onClick={() => onNavigate('categorias')}
+            className={`w-full flex items-center justify-between px-4 py-3 font-mono text-xs uppercase tracking-wider transition-colors cursor-pointer border-b border-[#1c1c1c] ${
+              activeTab === 'categorias'
+                ? 'bg-[#141414] border-l-2 border-l-[#d4ff00] text-white'
+                : 'text-[#828282] hover:text-white hover:bg-[#0c0c0c] border-l-2 border-l-transparent'
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <span className="text-[#d4ff00]">03.</span>
+              <span>CATEGORÍAS</span>
+            </span>
+            <span className="text-[10px] bg-[#262626] text-white px-1.5 py-0.5">
+              {String(categoryCount).padStart(2, '0')}
+            </span>
+          </button>
+
+          {/* 04. Ajustes / Backup */}
           <button
             type="button"
             onClick={() => onNavigate('respaldo')}
@@ -85,7 +107,7 @@ export function Sidebar({
             }`}
           >
             <span className="flex items-center gap-2">
-              <span className="text-[#d4ff00]">03.</span>
+              <span className="text-[#d4ff00]">04.</span>
               <span>AJUSTES / EXP.JSON</span>
             </span>
             <Terminal className="w-3.5 h-3.5 text-[#828282]" />

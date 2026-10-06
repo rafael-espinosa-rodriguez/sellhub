@@ -1,4 +1,4 @@
-export type ActiveTab = 'catalogo' | 'favoritos' | 'nuevo' | 'respaldo';
+export type ActiveTab = 'catalogo' | 'favoritos' | 'nuevo' | 'respaldo' | 'categorias';
 
 export interface ToastMessage {
   id: string;
